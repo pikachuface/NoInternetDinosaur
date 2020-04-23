@@ -23,7 +23,7 @@ namespace NoInternetDinosaur
             InitializeComponent();
             this.newScore = score;
             getScoreBoard();
-            
+            SetScore();
         }
 
         private void getScoreBoard()
@@ -69,9 +69,10 @@ namespace NoInternetDinosaur
 
         private void SetScore()
         {
-            if (people.Count< 9)
+            bool newBest = false;
+            if (people.Count < 9)
             {
-                GoToNewBest();
+                newBest = true;
             }
             else
             {
@@ -79,36 +80,76 @@ namespace NoInternetDinosaur
                 {
                     if (people[i].Score < newScore)
                     {
-                        GoToNewBest();
+                        newBest = true;
                     }
                 }
             }
+
+            if (newBest) GoToNewBest();
+            else outputScore();
+
 
         }
 
         private void GoToNewBest()
         {
-            this.Size = newScorePanel.Size;
+            this.Size = new Size(296, 102 + 30);
+            scoreLabel.Text = $"Score: {newScore}";
             newScorePanel.Visible = true;
+        }
+
+        private void GoToLeaderBoard()
+        {
+            this.Size = new Size(312, 381);
+            newScorePanel.Visible = false;
         }
 
         private void outputScore()
         {
             for (int i = 0; i < 10 && i < people.Count; i++)
             {
-                outputBox.Text += $"{i + 1}. {people[i].Name} {people[i].Score}";
+                outputBox.Text += $"{i + 1}. {people[i].Name} {people[i].Score}" + Environment.NewLine;
             }
         }
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-
+            if (!inputNameBox.Text.Contains("~") && !String.IsNullOrWhiteSpace(inputNameBox.Text))
+            {
+                if (inputNameBox.Text.Length < 20)
+                {
+                    people.Add(new Person(inputNameBox.Text, newScore));
+                    people.Sort((x, y) => y.Score.CompareTo(x.Score));
+                    if (people.Count > 10)
+                    {
+                        people.RemoveAt(people.Count - 1);
+                    }
+                    WriteScoreBoard();
+                    GoToLeaderBoard();
+                    outputScore();
+                }
+            }
         }
 
         private void newScoreClosebtn_Click(object sender, EventArgs e)
         {
-            this.Size = new Size(296, 342);
-            newScorePanel.Visible = false;
+            GoToLeaderBoard();
+            outputScore();
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to delete the leader board??", "Delete?", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2);
+            if (result==DialogResult.Yes)
+            {
+                File.Delete(filename);
+                this.Close();
+            }
         }
     }
 

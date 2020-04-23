@@ -33,19 +33,19 @@
             this.closeBtn = new System.Windows.Forms.Button();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.newScorePanel = new System.Windows.Forms.Panel();
-            this.scoreLabel = new System.Windows.Forms.Label();
-            this.NameLabel = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.addBtn = new System.Windows.Forms.Button();
             this.newScoreClosebtn = new System.Windows.Forms.Button();
+            this.addBtn = new System.Windows.Forms.Button();
+            this.inputNameBox = new System.Windows.Forms.TextBox();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.scoreLabel = new System.Windows.Forms.Label();
             this.newScorePanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // outputBox
             // 
             this.outputBox.Location = new System.Drawing.Point(0, 42);
             this.outputBox.Multiline = true;
-            this.outputBox.Name = "textBox1";
+            this.outputBox.Name = "outputBox";
             this.outputBox.ReadOnly = true;
             this.outputBox.Size = new System.Drawing.Size(296, 254);
             this.outputBox.TabIndex = 0;
@@ -69,6 +69,7 @@
             this.closeBtn.TabIndex = 2;
             this.closeBtn.Text = "Close";
             this.closeBtn.UseVisualStyleBackColor = true;
+            this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
             // 
             // deleteBtn
             // 
@@ -81,48 +82,34 @@
             this.deleteBtn.TabIndex = 3;
             this.deleteBtn.Text = "Delete";
             this.deleteBtn.UseVisualStyleBackColor = false;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // newScorePanel
             // 
             this.newScorePanel.Controls.Add(this.newScoreClosebtn);
             this.newScorePanel.Controls.Add(this.addBtn);
-            this.newScorePanel.Controls.Add(this.textBox2);
+            this.newScorePanel.Controls.Add(this.inputNameBox);
             this.newScorePanel.Controls.Add(this.NameLabel);
             this.newScorePanel.Controls.Add(this.scoreLabel);
-            this.newScorePanel.Location = new System.Drawing.Point(0, -3);
+            this.newScorePanel.Location = new System.Drawing.Point(0, 0);
             this.newScorePanel.Name = "newScorePanel";
             this.newScorePanel.Size = new System.Drawing.Size(296, 102);
             this.newScorePanel.TabIndex = 4;
             this.newScorePanel.Visible = false;
             // 
-            // scoreLabel
+            // newScoreClosebtn
             // 
-            this.scoreLabel.AutoSize = true;
-            this.scoreLabel.Location = new System.Drawing.Point(13, 16);
-            this.scoreLabel.Name = "scoreLabel";
-            this.scoreLabel.Size = new System.Drawing.Size(41, 13);
-            this.scoreLabel.TabIndex = 0;
-            this.scoreLabel.Text = "Score: ";
-            // 
-            // NameLabel
-            // 
-            this.NameLabel.AutoSize = true;
-            this.NameLabel.Location = new System.Drawing.Point(13, 42);
-            this.NameLabel.Name = "NameLabel";
-            this.NameLabel.Size = new System.Drawing.Size(38, 13);
-            this.NameLabel.TabIndex = 0;
-            this.NameLabel.Text = "Name:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(57, 42);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(210, 20);
-            this.textBox2.TabIndex = 1;
+            this.newScoreClosebtn.Location = new System.Drawing.Point(111, 57);
+            this.newScoreClosebtn.Name = "newScoreClosebtn";
+            this.newScoreClosebtn.Size = new System.Drawing.Size(75, 23);
+            this.newScoreClosebtn.TabIndex = 2;
+            this.newScoreClosebtn.Text = "Close";
+            this.newScoreClosebtn.UseVisualStyleBackColor = true;
+            this.newScoreClosebtn.Click += new System.EventHandler(this.newScoreClosebtn_Click);
             // 
             // addBtn
             // 
-            this.addBtn.Location = new System.Drawing.Point(192, 68);
+            this.addBtn.Location = new System.Drawing.Point(192, 57);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(75, 23);
             this.addBtn.TabIndex = 2;
@@ -130,15 +117,30 @@
             this.addBtn.UseVisualStyleBackColor = true;
             this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
-            // newScoreClosebtn
+            // inputNameBox
             // 
-            this.newScoreClosebtn.Location = new System.Drawing.Point(111, 68);
-            this.newScoreClosebtn.Name = "newScoreClosebtn";
-            this.newScoreClosebtn.Size = new System.Drawing.Size(75, 23);
-            this.newScoreClosebtn.TabIndex = 2;
-            this.newScoreClosebtn.Text = "Close";
-            this.newScoreClosebtn.UseVisualStyleBackColor = true;
-            this.newScoreClosebtn.Click += new System.EventHandler(this.newScoreClosebtn_Click);
+            this.inputNameBox.Location = new System.Drawing.Point(57, 31);
+            this.inputNameBox.Name = "inputNameBox";
+            this.inputNameBox.Size = new System.Drawing.Size(210, 20);
+            this.inputNameBox.TabIndex = 1;
+            // 
+            // NameLabel
+            // 
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Location = new System.Drawing.Point(13, 34);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(38, 13);
+            this.NameLabel.TabIndex = 0;
+            this.NameLabel.Text = "Name:";
+            // 
+            // scoreLabel
+            // 
+            this.scoreLabel.AutoSize = true;
+            this.scoreLabel.Location = new System.Drawing.Point(12, 9);
+            this.scoreLabel.Name = "scoreLabel";
+            this.scoreLabel.Size = new System.Drawing.Size(41, 13);
+            this.scoreLabel.TabIndex = 0;
+            this.scoreLabel.Text = "Score: ";
             // 
             // ScoreForm
             // 
@@ -170,7 +172,7 @@
         private System.Windows.Forms.Panel newScorePanel;
         private System.Windows.Forms.Button newScoreClosebtn;
         private System.Windows.Forms.Button addBtn;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox inputNameBox;
         private System.Windows.Forms.Label NameLabel;
         private System.Windows.Forms.Label scoreLabel;
     }

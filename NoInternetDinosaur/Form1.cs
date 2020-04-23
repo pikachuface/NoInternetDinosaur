@@ -97,6 +97,10 @@ namespace NoInternetDinosaur
                 if (obstacle.Bounds.IntersectsWith(player.Bounds))
                 {
                     EndGame();
+                    using (var form = new ScoreForm(score))
+                    {
+                        form.ShowDialog();
+                    }
                 }   
             }
         }
