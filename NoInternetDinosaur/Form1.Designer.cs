@@ -100,7 +100,9 @@
             this.ClientSize = new System.Drawing.Size(686, 292);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.gameCanvas);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "No Internet!";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);

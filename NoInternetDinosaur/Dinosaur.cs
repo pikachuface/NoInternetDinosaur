@@ -10,34 +10,24 @@ namespace NoInternetDinosaur
 {
     class Dinosaur : PictureBox
     {
-        public int Speed;
-        public int Lives = 1;
+        public int Lives;
 
         private float jumpSpeed;
         private bool onGround = true;
         Panel gameCanvas;
 
         #region ctor
-        public Dinosaur(int size, Panel parent, int speed)
+        public Dinosaur(int size, Panel parent,int lives = 1 )
         {
             this.gameCanvas = parent;
             this.Parent = parent;
             this.BackColor = Color.DarkGreen;
             this.Size = new Size(size, size);
-            this.Speed = speed;
-            this.Location = new Point((int)(size * 1.5), gameCanvas.Height - size);
-        }
-
-        public Dinosaur(int size, Panel parent, int speed, int lives)
-        {
-            this.gameCanvas = parent;
-            this.Parent = parent;
-            this.BackColor = Color.DarkGreen;
-            this.Size = new Size(size, size);
-            this.Speed = speed;
             this.Location = new Point((int)(size * 1.5), gameCanvas.Height - size);
             this.Lives = lives;
         }
+
+
 
         #endregion
 

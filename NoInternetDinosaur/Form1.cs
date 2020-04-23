@@ -14,7 +14,8 @@ namespace NoInternetDinosaur
     {
         List<Obstacle> obstacles = new List<Obstacle>();
         Dinosaur player;
-        int score; 
+        int score;
+        int dificulty = 0;
         
 
         public MainForm()
@@ -33,6 +34,7 @@ namespace NoInternetDinosaur
             }
             player = new Dinosaur(40, gameCanvas, 20);
             score = 0;
+            obstacleTimer.Interval = 1200;
             gameTick.Start();
             obstacleTimer.Start();
             CollisonDetection.Start();
@@ -75,6 +77,12 @@ namespace NoInternetDinosaur
                 obstacle.Update();
             }
             scoreLabel.Text = $"Score: {score++}";
+            if (score>dificulty+300)
+            {
+                dificulty = score;
+                Settings.GameSpeed++;
+                obstacleTimer.Interval -= 50;
+            }
         }
 
         private void obstacleTimer_Tick(object sender, EventArgs e)

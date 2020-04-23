@@ -23,7 +23,7 @@ namespace NoInternetDinosaur
             this.BackColor = Color.DarkGray;
             if (type == 1)
             {
-                this.Size = new Size(20,10);
+                this.Size = new Size(50 ,10);
                 this.Location = new Point(gameCanvas.Width + 2 * this.Width, 80);
             }
             else
