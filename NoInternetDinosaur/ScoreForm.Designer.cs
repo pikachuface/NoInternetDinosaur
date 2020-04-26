@@ -43,6 +43,7 @@
             // 
             // outputBox
             // 
+            this.outputBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.outputBox.Location = new System.Drawing.Point(0, 42);
             this.outputBox.Multiline = true;
             this.outputBox.Name = "outputBox";

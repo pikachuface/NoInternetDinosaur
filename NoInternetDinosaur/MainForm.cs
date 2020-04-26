@@ -10,7 +10,7 @@ namespace NoInternetDinosaur
         Dinosaur player;
         int score;
         int dificulty = 0;
-        
+
 
         public MainForm()
         {
@@ -71,7 +71,7 @@ namespace NoInternetDinosaur
                 obstacle.Update();
             }
             scoreLabel.Text = $"Score: {score++}";
-            if (score>dificulty+300)
+            if (score > dificulty + 300 && dificulty < 2000)
             {
                 dificulty = score;
                 Settings.GameSpeed++;
@@ -95,7 +95,7 @@ namespace NoInternetDinosaur
                     {
                         form.ShowDialog();
                     }
-                }   
+                }
             }
         }
     }
