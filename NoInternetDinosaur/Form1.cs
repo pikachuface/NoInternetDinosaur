@@ -21,7 +21,7 @@ namespace NoInternetDinosaur
         public MainForm()
         {
             InitializeComponent();
-            player = new Dinosaur(40, gameCanvas, 20);
+            player = new Dinosaur(40, gameCanvas);
         }
 
         void StartGame()
@@ -32,7 +32,7 @@ namespace NoInternetDinosaur
             {
                 obstacle.Dispose();
             }
-            player = new Dinosaur(40, gameCanvas, 20);
+            player = new Dinosaur(40, gameCanvas);
             score = 0;
             obstacleTimer.Interval = 1200;
             gameTick.Start();

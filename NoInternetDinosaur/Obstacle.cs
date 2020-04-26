@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace NoInternetDinosaur
 {
-    class Obstacle : PictureBox
+    class Obstacle : Button
     {
         Panel gameCanvas;
         int type;
@@ -16,11 +16,20 @@ namespace NoInternetDinosaur
 
         public Obstacle(Panel parent)
         {
+
+            //Apereance
+            this.BackColor = Color.DarkGray;
+            this.ForeColor = Color.DarkGray;
+            this.FlatStyle = FlatStyle.Flat;
+            this.Enabled = false;
+
+            //Function
             Random rnd = new Random(DateTime.Now.Second);
             type = rnd.Next(0, 2);
-            this.gameCanvas = parent;
+
             this.Parent = parent;
-            this.BackColor = Color.DarkGray;
+            this.gameCanvas = parent;
+            
             if (type == 1)
             {
                 this.Size = new Size(50 ,10);
