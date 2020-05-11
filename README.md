@@ -2,6 +2,8 @@
  
  ## How to use!
  Download the repositary a then just open the ***.sln** file in **Visual Studio 16 2019**.
+ 
+ *You will need to have [C# .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) installed!*
 
 ---
  ### Need HELP?
